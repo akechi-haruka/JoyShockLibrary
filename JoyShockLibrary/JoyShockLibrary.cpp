@@ -1,9 +1,13 @@
 // JoyShockLibrary.cpp : Defines the exported functions for the DLL application.
 //
 
+#pragma comment(lib, "Setupapi.lib")
+
+#include <cstdio>
+#include <cstdlib>
 #include "JoyShockLibrary.h"
 #include <bitset>
-#include "hidapi.h"
+#include "hidapi/hidapi.h"
 #include <chrono>
 #include <thread>
 #include <shared_mutex>
@@ -1005,6 +1009,9 @@ JSL_SETTINGS JslGetControllerInfoAndSettings(int deviceId)
 		settings.isConnected = true;
 		settings.isCalibrating = jc->use_continuous_calibration;
 		settings.autoCalibrationEnabled = jc->motion.GetCalibrationMode() != GamepadMotionHelpers::CalibrationMode::Manual;
+		settings.isWired = jc->is_usb;
+		const char* usbId = jc->path.c_str();
+		memcpy_s(settings.controllerPath, 255, usbId, jc->path.size());
 
 		switch (jc->controller_type)
 		{

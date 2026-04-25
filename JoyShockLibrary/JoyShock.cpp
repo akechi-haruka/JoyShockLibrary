@@ -1,10 +1,12 @@
 #pragma once
 
 #include "JoyShockLibrary.h"
+#include "GamepadMotion.hpp"
 #include <bitset>
 #include "hidapi.h"
 #include <chrono>
 #include <thread>
+#include <mutex>
 #include <unordered_map>
 #include <atomic>
 #include "tools.cpp"
