@@ -3,7 +3,7 @@
 #include "JoyShockLibrary.h"
 #include "GamepadMotion.hpp"
 #include <bitset>
-#include "hidapi.h"
+#include "hidapi/hidapi.h"
 #include <chrono>
 #include <thread>
 #include <mutex>
