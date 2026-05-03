@@ -1001,7 +1001,7 @@ JSL_SETTINGS JslGetControllerInfoAndSettings(int deviceId)
 	std::shared_lock<std::shared_timed_mutex> lock(_connectedLock);
 	JoyShock* jc = GetJoyShockFromHandle(deviceId);
 	if (jc != nullptr) {
-		JSL_SETTINGS settings;
+		JSL_SETTINGS settings = {};
 
 		settings.gyroSpace = jc->gyroSpace;
 		settings.playerNumber = jc->player_number;
